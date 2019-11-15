@@ -94,7 +94,7 @@ def command_generate(tables=[]):
             if not attr.name == 'id':
                 comma = "," if cont < len(table.attributes) else ""
                 cmdLine = cmdLine + '{}:{}{}'.format(attr.name, attr.type, comma)
-        command += cmdLine + " && \\ \n "
+        command += cmdLine + "" if tables.index(table) + 1 == len(tables) else " && \\ \n "
     return command
 
 
