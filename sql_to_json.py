@@ -85,7 +85,9 @@ def get_tables(file='files/sql.sql'):
 def command_generate(tables=[]):
     # sequelize model:create --name User --attributes "username:[type:string,unique:true]"
     command = ""
+    extCont = 0
     for table in tables:
+        extCont += 1
         cmdLine = 'npx sequelize model:create --name {} --attributes '.format(
             "".join([(v.capitalize()) for v in table.name.split('_')]))
         cont = 0
@@ -94,7 +96,8 @@ def command_generate(tables=[]):
             if not attr.name == 'id':
                 comma = "," if cont < len(table.attributes) else ""
                 cmdLine = cmdLine + '{}:{}{}'.format(attr.name, attr.type, comma)
-        command += cmdLine + "" if tables.index(table) + 1 == len(tables) else " && \\ \n "
+        breakLine = "" if extCont == len(tables) else " && \\ \n "
+        command += cmdLine +  breakLine
     return command
 
 
