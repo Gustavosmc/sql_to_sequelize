@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from sql_to_json import get_tables, command_generate
+import os
 
 app = Flask(__name__)
 
@@ -22,4 +23,5 @@ def uploader_file():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
