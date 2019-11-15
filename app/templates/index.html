@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <link rel="stylesheet" href='/static/styles/index.css' />
+    <link rel="stylesheet" href='/static/styles/w3.css' />
+   </head>
+   <body class="w3-container">
+      <div class="div-main 	 w3-card">
+         <p class="w3-margin">Exporte um arquivo .sql a partir do modelo do Mysql Workbench e suba ele aqui para gerar os comandos para a criação dos Models e Migrations do Sequelize</p>
+         <form class="w3-panel" action = "http://localhost:5000/uploader" method = "POST"
+            enctype = "multipart/form-data">
+            <input class="w3-margin" type = "file" name = "file" />
+            <input class="w3-button w3-block w3-green w3-round-xlarge w3-margin-top" type = "submit"/>
+         </form>
+      </div>
+       <div class="div-commands  w3-container ">
+            <code class="w3-margin">{{ commands }}</code>
+         </div>
+   </body>
+</html>
