@@ -11,6 +11,8 @@ MYSQL_SEQUELIZE_MAP = {
     'float': 'float',
     'varchar': 'string',
     'blob': 'blob',
+    'char': 'string',
+    'text': 'text',
 }
 
 

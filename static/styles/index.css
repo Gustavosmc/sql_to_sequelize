@@ -19,3 +19,7 @@ body {
   margin-top: 100px;
   padding: 10px;
 }
+
+code {
+    overflow-wrap: break-word;
+}
