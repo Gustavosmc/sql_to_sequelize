@@ -41,7 +41,6 @@ def get_tables(file='files/sql.sql'):
         table = Table()
         for line in lines:
             line = line.lower()
-
             if line.find('primary key') > -1 and flag == FLAG_ATTRIBUTES:
                 for attr in table.attributes:
                     if line.find('`' + attr.name + '`') > -1:
@@ -74,7 +73,7 @@ def get_tables(file='files/sql.sql'):
                 flag = FLAG_ATTRIBUTES
 
             # CLOSE TABLE
-            if line.find('engine') > -1 < line.find(';'):
+            if line.find(';') > -1:
                 tables.append(table)
                 table = Table()
                 flag = FLAG_TABLE_NAME
@@ -87,6 +86,7 @@ def command_generate(tables=[]):
     command = ""
     extCont = 0
     for table in tables:
+        print(table)
         extCont += 1
         cmdLine = 'npx sequelize model:create --name {} --attributes '.format(
             "".join([(v.capitalize()) for v in table.name.split('_')]))
