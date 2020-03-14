@@ -2,6 +2,7 @@ MYSQL_SEQUELIZE_MAP = {
     'int': 'integer',
     'integer': 'integer',
     'double': 'double',
+    'decimal': 'double',
     'boolean': 'tinyint',
     'tinyint': 'tinyint',
     'smallint': 'smallint',
@@ -14,7 +15,7 @@ MYSQL_SEQUELIZE_MAP = {
     'char': 'string',
     'text': 'text',
     'polygon': 'polygon',
-    'point': 'point'
+    'point': 'point',
 }
 
 
