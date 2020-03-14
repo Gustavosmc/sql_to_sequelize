@@ -13,6 +13,8 @@ MYSQL_SEQUELIZE_MAP = {
     'blob': 'blob',
     'char': 'string',
     'text': 'text',
+    'polygon': 'polygon',
+    'point': 'point'
 }
 
 

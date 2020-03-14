@@ -50,17 +50,20 @@ def get_tables(file='files/sql.sql'):
             # SET ATTRIBUTES FOR TABLE
             if flag == FLAG_ATTRIBUTES:
                 if str(line).find('index') == -1:
-                    splited_line = line.split(' ')
-                    attr = Attribute()
-                    attr.name = line.split("`")[1].strip()
-                    attr.type = re.sub(r'\([0-9]+\)', '', line.split()[1])
-                    attr.type = get_type(attr.type)
-                    attr.nullable = line.find('not null') == -1
-                    attr.autoincrement = line.find('auto_increment') > -1
-                    if line.find('default') > -1:
-                        attr.default = splited_line[splited_line.index('default') + 1].strip().rstrip(',')
-                    table.attributes.append(attr)
-
+                    print(line)
+                    try:
+                        splited_line = line.split(' ')
+                        attr = Attribute()
+                        attr.name = line.split("`")[1].strip()
+                        attr.type = re.sub(r'\([0-9]+\)', '', line.split()[1])
+                        attr.type = get_type(attr.type)
+                        attr.nullable = line.find('not null') == -1
+                        attr.autoincrement = line.find('auto_increment') > -1
+                        if line.find('default') > -1:
+                            attr.default = splited_line[splited_line.index('default') + 1].strip().rstrip(',')
+                        table.attributes.append(attr)
+                    except Exception as ex:
+                        print(ex)
             # SET UNIQUE FIELDS
             if line.find('unique index') > -1:
                 for attr in table.attributes:
